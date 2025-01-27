@@ -1,8 +1,8 @@
 <template>
-    <div class="grow lg:container lg:mx-auto py-10 flex flex-col items-center">
-        <input class="bg-white w-96 py-2 px-1 border border-gray-300 my-8 rounded shadow" b type="text" name="todo" id="todo" v-model="newToDo" placeholder="Enter New To Do" @keyup.enter="addTodo">
+    <div class="flex flex-col items-center py-10 grow lg:container lg:mx-auto">
+        <input class="px-1 py-2 my-8 bg-white border border-gray-300 rounded shadow w-96" b type="text" name="todo" id="todo" v-model="newToDo" placeholder="Enter New To Do">
         <section class="flex flex-col gap-5">
-            <div class="w-96 p-3 shadow-md rounded bg-stone-200 cursor-pointer text-gray-700 hover:bg-stone-300 hover:scale-105 transition duration-200 ease-in-out"
+            <div class="p-3 text-gray-700 transition duration-200 ease-in-out rounded shadow-md cursor-pointer w-96 bg-stone-200 hover:bg-stone-300 hover:scale-105"
             v-for="td in todos"
             :key="td.id"
             @click="() => {todos = todos.filter((t) => t.id == td.id)}"
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, Ref} from 'vue';
 
 interface ToDo {
     id: number,
@@ -33,9 +33,5 @@ const todos: Ref<Array<ToDo>> = ref([
         title: 'Apply Roboto Font Globally'
     }
 ]);
-
-const addToDo(){
-    
-}
 
 </script>
