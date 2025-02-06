@@ -16,21 +16,19 @@ class Recipe extends Model
 
     public function preparationStages()
     {
-        return $this->hasMany(PreparationStage::class);
-    }
+        return $this->hasMany(PreparationStage::class, 'recipes_id', 'id');
+    }    
 
 
     public function images()
     {
-        return $this->hasMany(RecipeImage::class);
+        return $this->hasMany(RecipeImage::class, 'recipes_id', 'id');
     }
     
     public function ingredients()
     {
-        return $this->hasMany(RecipeIngredient::class);
+        return $this->hasMany(RecipeIngredient::class, 'recipes_id', 'id');
     }
-
-
 }
 
 

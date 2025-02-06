@@ -2,8 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia; 
-use app\Http\Controller\RecipeController;
+
+use App\Http\Controllers\RecipeController;
 
 Route::get('/', function () {
     return Inertia::render('Home');
 });
+
+// Route::get('/recipes', function () {
+//     return Inertia::render('Recipes');
+// });
+Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
+
+
+// Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');

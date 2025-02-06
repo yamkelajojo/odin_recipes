@@ -27,6 +27,6 @@ class PreparationStage extends Model
      */
     public function steps()
     {
-        return $this->hasMany(PreparationStageStep::class);
+        return $this->hasMany(PreparationStageStep::class, 'preparation_stages_id');
     }
 }
