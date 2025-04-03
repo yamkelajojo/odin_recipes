@@ -14,10 +14,23 @@ class RecipeController extends Controller
         $recipes = Recipe::with(['images', 'ingredients', 'preparationStages'])->get();
 
         // Pass data to the Inertia page
-        return Inertia::render('Recipes', [
-            'recipes' => $recipes,
-        ]);
+        return Inertia::render('Recipes');
     }
+
+    public function fetchRecipes(Request $request)
+    {
+        // $recipes = Recipe::with([
+        //     'images',
+        //     'ingredients.ingredient.foodCategory',  
+        //     'ingredients.ingredient.unit',          
+        //     'preparationStages.preparationStageSteps'
+        // ])->get();
+        
+        $recipes = Recipe::with(['images', 'ingredients', 'preparationStages'])->get();
+
+        return response()->json($recipes);
+    }
+
 
     public function show($id)
     {

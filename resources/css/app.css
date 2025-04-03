@@ -1,7 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+    --main-bg: #F4F4F4;
+    --main-orange: #FDBB3F;
+    --main-red: #DB3B2B;
+  }
+
 html{
     color: #1F2937;
+    font-family: "Josefin Slab", serif;
+    background-color: var(--main-bg);
 }
+
+
+
+

@@ -13,6 +13,8 @@ Route::get('/', function () {
 //     return Inertia::render('Recipes');
 // });
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');
+Route::post('/recipes/fetch', [RecipeController::class, 'fetchRecipes']);
+
 
 
 // Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes.index');

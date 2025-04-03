@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col h-screen bg-gray-300">
+  <div class="flex flex-col h-screen">
   <Header/>
-    <div class="grow lg:container mx-auto py-16">
-        <div>
+    <div class="py-16 mx-auto grow lg:container">
+        <!-- <div>
           <img class='images' src="/storage/images/beef_curry_bunny_chow_2.png">
-        </div>
+        </div> -->
     </div>
     <Footer/>
   </div>
