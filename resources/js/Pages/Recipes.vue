@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col h-screen bg-gray-300">
-    <Header/>
+    <Hero/>
     <p class="my-2 text-2xl text-gray-800">Recipes</p>
       <div class="py-16 mx-auto grow lg:container">
         <transition name="spinner_switch">
@@ -18,7 +18,7 @@
   <script setup lang="ts">
   import { ref, onMounted, Ref} from 'vue';
   import axios from 'axios';
-  import Header from '../components/Header.vue';
+  import Hero from '../components/Hero.vue';
   import Footer from'../components/Footer.vue';
 
   const showSpinner: Ref<boolean> = ref(false);

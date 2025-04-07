@@ -1,6 +1,6 @@
 <template>
-  <footer class="flex justify-center shadow-t-md py-4">
-    <p>&copy; {{ new Date().getFullYear() }} Dojo. All rights reserved.</p>
+  <footer class="flex justify-center py-4 shadow">
+    <p>&copy; {{ new Date().getFullYear() }} Vortechx. All rights reserved.</p>
   </footer>
 </template>
 

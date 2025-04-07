@@ -1,17 +1,21 @@
 <template>
-    <nav class="flex justify-between py-8 shadow p-36">
-        <div style="background: url('/resources/js/components/icons/food_truck.png') lightgray 50% / contain no-repeat;">
+    <nav class="flex items-center justify-between py-6 shadow px-36">
+        <div class="h-24 w-24 bg-transparent flex items-center justify-center">
+            <img src="/storage/icons/food_truck.png" alt="Food Truck" class="h-full w-full object-contain" />
         </div>
 
-        <p id="title" class="font-semibold leading-normal tracking-tight text-center truncate">
+        
+        <p id="title" ref="title" class="font-semibold">
             Odin Recipes
         </p>
+
+
         <button 
             @mouseenter="hovering_nav_menu_button = true"
             @mouseleave="hovering_nav_menu_button = false"
             ref="nav_menu_button"
             id="menu_button"
-            class="flex justify-center items-center rounded-xl h-fit p-2 px-4 font-bold">
+            class="flex items-center justify-center p-2 px-4 font-bold rounded-xl h-fit">
             M
             <span id="burger_icon">
                 <svg ref="burger_svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -31,9 +35,10 @@ import gsap from 'gsap';
 const hovering_nav_menu_button: Ref<boolean> = ref(false);
 const nav_menu_button : Ref<HTMLElement | null> = ref(null);
 const burger_svg : Ref<HTMLElement | null> = ref(null);
+const title : Ref<HTMLElement | null> = ref(null);
+
 
 watch(hovering_nav_menu_button, (newQuestion : boolean) => {
-    console.log("sangena", hovering_nav_menu_button.value);
     if(nav_menu_button.value && hovering_nav_menu_button.value && burger_svg.value){
         let tl = gsap.timeline();
         tl.to(nav_menu_button.value, { duration: 2, x: 20, backgroundColor: '#DB3B2B', color: '#FDBB3F' })
@@ -42,10 +47,6 @@ watch(hovering_nav_menu_button, (newQuestion : boolean) => {
 })
 
 onMounted(() => {
-    console.log("Mounted")
-    if(burger_svg.value){
-        console.log("what?: ",burger_svg.value)
-    }
 })
 
 </script>
@@ -53,10 +54,10 @@ onMounted(() => {
 <style lang="css" scoped>
 #title {
     color: var(--main-orange);
-    font-size: 50px;
+    font-size: 48px;
     font-style: normal;
     line-height: normal;
-    letter-spacing: -2.5px;
+    letter-spacing: -3.4px;
     white-space: nowrap; /* To prevent text wrapping */
     text-overflow: ellipsis; /* If you want to show ellipsis for overflowing text */
 }
@@ -65,6 +66,7 @@ onMounted(() => {
     color: var(--main-red);
     background-color: var(--main-orange);
     letter-spacing: -1.4px;
+    white-space: nowrap;
 }
 
 /* #menu_button:hover{
