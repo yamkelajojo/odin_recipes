@@ -1,5 +1,8 @@
 <template>
     <Hero/>
+    <!-- <section id class="flex h-screen">
+
+    </section> -->
     <Footer/>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <div  id="hero" class="h-screen flex flex-col">
+    <div  id="hero" class="h-full flex flex-col">
         <Navbar title="Sho Kwedini"/>
     </div>
 </template>
@@ -8,8 +8,10 @@
 import Navbar from '../components/Navbar.vue'
 </script>
 
-<style lang="" scoped>
-    #hero{
-        
-    }
+<style scoped>
+#hero{
+    background: url('/storage/images/or_hero_bg.jpg') lightgray 50% / cover no-repeat;
+    
+    background-blend-mode: multiply;
+}
 </style>

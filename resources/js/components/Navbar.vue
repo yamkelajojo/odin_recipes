@@ -1,36 +1,40 @@
 <template>
-    <nav class="flex items-center justify-between py-6 shadow px-36">
-        <div class="h-24 w-24 bg-transparent flex items-center justify-center">
-            <img src="/storage/icons/food_truck.png" alt="Food Truck" class="h-full w-full object-contain" />
+    <nav class="flex flex-col" style="background-color: var(--main-bg);">
+        <div class="flex px-36 py-6 items-center justify-between">
+            <div class="h-24 w-24 bg-transparent flex items-center justify-center">
+                <img src="/storage/icons/food_truck.png" alt="Food Truck" class="h-full w-full object-contain" />
+            </div>
+    
+            
+            <p id="title" ref="title" class="font-semibold">
+                Odin Recipes
+            </p>
+    
+    
+            <button 
+                @mouseenter="hovering_nav_menu_button = true"
+                @mouseleave="hovering_nav_menu_button = false"
+                ref="nav_menu_button"
+                id="menu_button"
+                class="flex items-center justify-center p-2 px-4 font-bold rounded-xl h-fit">
+                M
+                <span id="burger_icon">
+                    <svg ref="burger_svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 21C3.45 21 2.97917 20.8042 2.5875 20.4125C2.19583 20.0208 2 19.55 2 19V16H22V19C22 19.55 21.8042 20.0208 21.4125 20.4125C21.0208 20.8042 20.55 21 20 21H4ZM4 18V19H20V18H4ZM12 13.5C11.4 13.5 10.925 13.6667 10.575 14C10.225 14.3333 9.58333 14.5 8.65 14.5C7.71667 14.5 7.08333 14.3333 6.75 14C6.41667 13.6667 5.95 13.5 5.35 13.5C4.75 13.5 4.275 13.6667 3.925 14C3.575 14.3333 2.93333 14.5 2 14.5V12.5C2.6 12.5 3.075 12.3333 3.425 12C3.775 11.6667 4.41667 11.5 5.35 11.5C6.28333 11.5 6.91667 11.6667 7.25 12C7.58333 12.3333 8.05 12.5 8.65 12.5C9.25 12.5 9.725 12.3333 10.075 12C10.425 11.6667 11.0667 11.5 12 11.5C12.9333 11.5 13.575 11.6667 13.925 12C14.275 12.3333 14.75 12.5 15.35 12.5C15.95 12.5 16.4167 12.3333 16.75 12C17.0833 11.6667 17.7167 11.5 18.65 11.5C19.5833 11.5 20.2417 11.6667 20.625 12C21.0083 12.3333 21.4667 12.5 22 12.5V14.5C21.0667 14.5 20.4417 14.3333 20.125 14C19.8083 13.6667 19.35 13.5 18.75 13.5C18.15 13.5 17.6667 13.6667 17.3 14C16.9333 14.3333 16.2833 14.5 15.35 14.5C14.4167 14.5 13.775 14.3333 13.425 14C13.075 13.6667 12.6 13.5 12 13.5ZM2 10V9C2 7.08333 2.90417 5.60417 4.7125 4.5625C6.52083 3.52083 8.95 3 12 3C15.05 3 17.4792 3.52083 19.2875 4.5625C21.0958 5.60417 22 7.08333 22 9V10H2ZM12 5C9.93333 5 8.20417 5.25833 6.8125 5.775C5.42083 6.29167 4.53333 7.03333 4.15 8H19.85C19.4667 7.03333 18.5792 6.29167 17.1875 5.775C15.7958 5.25833 14.0667 5 12 5Z" fill="#DB3B2B"/>
+                    </svg>
+                </span>
+                n
+                u
+            </button>
         </div>
-
-        
-        <p id="title" ref="title" class="font-semibold">
-            Odin Recipes
-        </p>
-
-
-        <button 
-            @mouseenter="hovering_nav_menu_button = true"
-            @mouseleave="hovering_nav_menu_button = false"
-            ref="nav_menu_button"
-            id="menu_button"
-            class="flex items-center justify-center p-2 px-4 font-bold rounded-xl h-fit">
-            M
-            <span id="burger_icon">
-                <svg ref="burger_svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 21C3.45 21 2.97917 20.8042 2.5875 20.4125C2.19583 20.0208 2 19.55 2 19V16H22V19C22 19.55 21.8042 20.0208 21.4125 20.4125C21.0208 20.8042 20.55 21 20 21H4ZM4 18V19H20V18H4ZM12 13.5C11.4 13.5 10.925 13.6667 10.575 14C10.225 14.3333 9.58333 14.5 8.65 14.5C7.71667 14.5 7.08333 14.3333 6.75 14C6.41667 13.6667 5.95 13.5 5.35 13.5C4.75 13.5 4.275 13.6667 3.925 14C3.575 14.3333 2.93333 14.5 2 14.5V12.5C2.6 12.5 3.075 12.3333 3.425 12C3.775 11.6667 4.41667 11.5 5.35 11.5C6.28333 11.5 6.91667 11.6667 7.25 12C7.58333 12.3333 8.05 12.5 8.65 12.5C9.25 12.5 9.725 12.3333 10.075 12C10.425 11.6667 11.0667 11.5 12 11.5C12.9333 11.5 13.575 11.6667 13.925 12C14.275 12.3333 14.75 12.5 15.35 12.5C15.95 12.5 16.4167 12.3333 16.75 12C17.0833 11.6667 17.7167 11.5 18.65 11.5C19.5833 11.5 20.2417 11.6667 20.625 12C21.0083 12.3333 21.4667 12.5 22 12.5V14.5C21.0667 14.5 20.4417 14.3333 20.125 14C19.8083 13.6667 19.35 13.5 18.75 13.5C18.15 13.5 17.6667 13.6667 17.3 14C16.9333 14.3333 16.2833 14.5 15.35 14.5C14.4167 14.5 13.775 14.3333 13.425 14C13.075 13.6667 12.6 13.5 12 13.5ZM2 10V9C2 7.08333 2.90417 5.60417 4.7125 4.5625C6.52083 3.52083 8.95 3 12 3C15.05 3 17.4792 3.52083 19.2875 4.5625C21.0958 5.60417 22 7.08333 22 9V10H2ZM12 5C9.93333 5 8.20417 5.25833 6.8125 5.775C5.42083 6.29167 4.53333 7.03333 4.15 8H19.85C19.4667 7.03333 18.5792 6.29167 17.1875 5.775C15.7958 5.25833 14.0667 5 12 5Z" fill="#DB3B2B"/>
-                </svg>
-            </span>
-            n
-            u
-        </button>
+        <ColoredBars/>
     </nav>     
 </template>
 
 <script setup lang="ts">
 import { Ref, ref, watch, onMounted } from 'vue';
 import gsap from 'gsap';
+import ColoredBars from './ColoredBars.vue';
 
 const hovering_nav_menu_button: Ref<boolean> = ref(false);
 const nav_menu_button : Ref<HTMLElement | null> = ref(null);
@@ -39,16 +43,17 @@ const title : Ref<HTMLElement | null> = ref(null);
 
 
 watch(hovering_nav_menu_button, (newQuestion : boolean) => {
+    let tl = gsap.timeline();
+
     if(nav_menu_button.value && hovering_nav_menu_button.value && burger_svg.value){
-        let tl = gsap.timeline();
-        tl.to(nav_menu_button.value, { duration: 2, x: 20, backgroundColor: '#DB3B2B', color: '#FDBB3F' })
-        tl.to(burger_svg.value.querySelector('path'), { duration: 2, fill: '#FDBB3F' }, '<')
+        tl.to(nav_menu_button.value, { duration: 0.1, backgroundColor: '#DB3B2B', color: '#FDBB3F', ease: 'ease' })
+        tl.to(burger_svg.value.querySelector('path'), { duration: 0.1, fill: '#FDBB3F' }, '<')
+    }
+    else if(nav_menu_button.value && burger_svg.value){
+        tl.to(nav_menu_button.value, { duration: 0.1, backgroundColor: '#FDBB3F', color: '#DB3B2B' })
+        tl.to(burger_svg.value.querySelector('path'), { duration: 0.1, fill: '#DB3B2B' }, '<')
     }
 })
-
-onMounted(() => {
-})
-
 </script>
 
 <style lang="css" scoped>
