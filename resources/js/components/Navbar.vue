@@ -46,12 +46,12 @@ watch(hovering_nav_menu_button, (newQuestion : boolean) => {
     let tl = gsap.timeline();
 
     if(nav_menu_button.value && hovering_nav_menu_button.value && burger_svg.value){
-        tl.to(nav_menu_button.value, { duration: 0.1, backgroundColor: '#DB3B2B', color: '#FDBB3F', ease: 'ease' })
-        tl.to(burger_svg.value.querySelector('path'), { duration: 0.1, fill: '#FDBB3F' }, '<')
+        tl.to(nav_menu_button.value, { duration: 0.2, backgroundColor: '#DB3B2B', color: '#FDBB3F', })
+        tl.to(burger_svg.value.querySelector('path'), { duration: 0.2, fill: '#FDBB3F' }, '<')
     }
     else if(nav_menu_button.value && burger_svg.value){
-        tl.to(nav_menu_button.value, { duration: 0.1, backgroundColor: '#FDBB3F', color: '#DB3B2B' })
-        tl.to(burger_svg.value.querySelector('path'), { duration: 0.1, fill: '#DB3B2B' }, '<')
+        tl.to(nav_menu_button.value, { duration: 0.2, backgroundColor: '#FDBB3F', color: '#DB3B2B' })
+        tl.to(burger_svg.value.querySelector('path'), { duration: 0.2, fill: '#DB3B2B' }, '<')
     }
 })
 </script>
