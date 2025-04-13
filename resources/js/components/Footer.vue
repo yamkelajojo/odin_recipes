@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import ColoredBars from './ColoredBars.vue';
 import gsap from 'gsap';
+import { inject, onMounted } from 'vue';
 
 const enteringSVG = (e: MouseEvent) => {  
   const target = e.currentTarget as HTMLElement;
