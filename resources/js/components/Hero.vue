@@ -1,7 +1,7 @@
 <template>
-    <!-- <div  id="hero" class="flex flex-col h-screen">
+    <div  id="hero" class="flex flex-col h-screen">
         <Navbar title="Sho Kwedini"/>
-    </div> -->
+    </div>
 </template>
 
 <script setup lang="ts">
