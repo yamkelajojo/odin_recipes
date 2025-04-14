@@ -1,6 +1,6 @@
 <template>
     <Hero/>
-    <section id="second_section" class="flex flex-wrap items-center h-screen justify-evenly">
+    <section id="second_section" class="flex flex-wrap items-center justify-around h-screen">
       <FoodTypeCard img="/storage/images/red_wine_beef_curry.jpg" />
       <FoodTypeCard img="/storage/images/red_wine_beef_curry.jpg" />
       <FoodTypeCard img="/storage/images/red_wine_beef_curry.jpg" />

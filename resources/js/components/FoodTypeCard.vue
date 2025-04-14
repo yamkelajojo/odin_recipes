@@ -1,5 +1,9 @@
 <template>
-    <div class="relative flex flex-col overflow-hidden rounded-xl" id="food_card_type">
+    <div 
+        class="relative flex flex-col overflow-hidden rounded-xl" id="food_card_type"
+        @mouseenter="enteringCard"
+        @mouseleave="leavingCard"
+    >
         <div class="h-48 rounded-t-xl" id="card_image" :style="'background-image: url(' + img + ')'"></div>
         <div id="card_description" class="p-2">
             <p id="food_type" class="font-bold text-md">{{ foodType }}</p>
@@ -9,6 +13,8 @@
 </template>
 
 <script lang="ts" setup>
+import gsap from 'gsap';
+
     const props = defineProps({
         img: {
             type: String,
@@ -22,7 +28,25 @@
             type: String,
             default: 'Vegetables'
         }
-    })
+    });
+
+    const enteringCard = (e: MouseEvent) => {  
+        const target = e.currentTarget as HTMLElement;
+
+        console.log("nayi Enter",target);
+        
+        let tl = gsap.timeline();
+            tl.to(target, { duration: 0.2, filter: 'box-shadow(0 0 25px rgba(0,115,178,1))', scale: 1.05, ease: "power1.out" });
+    };
+
+    const leavingCard = (e: MouseEvent) => {  
+        const target = e.currentTarget as HTMLElement;
+
+        console.log("nayi Leave",target);
+        
+        let tl = gsap.timeline();
+            tl.to(target, { duration: 0.2, filter: 'box-shadow(0px 7px 29px rgba(253, 187, 63, 0.25))', scale: 1, ease: "power1.in" });
+    };
 </script>
 
 <style scoped>
