@@ -1,6 +1,6 @@
 <template>
     <div 
-        class="relative flex flex-col overflow-hidden rounded-xl" id="food_card_type"
+        class="relative flex flex-col overflow-hidden rounded-xl food_card_type" :id="'food_card_type' + cardId"
         @mouseenter="enteringCard"
         @mouseleave="leavingCard"
     >
@@ -14,43 +14,55 @@
 
 <script lang="ts" setup>
 import gsap from 'gsap';
+import { animate, createTimeline, waapi } from 'animejs';
+import { ref, Ref } from 'vue';
 
-    const props = defineProps({
-        img: {
-            type: String,
-            default: ''
-        },
-        foodType: {
-            type: String,
-            default: 'Vegetables'
-        },
-        foodTypeDescription: {
-            type: String,
-            default: 'Vegetables'
-        }
+const props = defineProps({
+    img: {
+        type: String,
+        default: ''
+    },
+    cardId: {
+        type: String,
+        default: ''
+    },
+    foodType: {
+        type: String,
+        default: 'Content'
+    },
+    foodTypeDescription: {
+        type: String,
+        default: 'Vegetables'
+    },
+});
+
+const hoverAnimation = ref<any>(null);
+
+const enteringCard = (e: MouseEvent) => {  
+    const target = e.currentTarget as HTMLElement;
+
+    hoverAnimation.value = animate(target, {
+        boxShadow: ['0px 7px 29px rgba(253, 187, 63, 0.25)', '0px 14px 58px rgba(253, 187, 63, 0.5)'],
+        scale: [1, 1.050],
+        duration: 60,
+        easing: 'in'
     });
+ 
+    if(hoverAnimation){
+        //@ts-ignore
+        // hoverAnimation.play();
+    }
+};
 
-    const enteringCard = (e: MouseEvent) => {  
-        const target = e.currentTarget as HTMLElement;
-
-        console.log("nayi Enter",target);
-        
-        let tl = gsap.timeline();
-            tl.to(target, { duration: 0.2, filter: 'box-shadow(0 0 25px rgba(0,115,178,1))', scale: 1.05, ease: "power1.out" });
-    };
-
-    const leavingCard = (e: MouseEvent) => {  
-        const target = e.currentTarget as HTMLElement;
-
-        console.log("nayi Leave",target);
-        
-        let tl = gsap.timeline();
-            tl.to(target, { duration: 0.2, filter: 'box-shadow(0px 7px 29px rgba(253, 187, 63, 0.25))', scale: 1, ease: "power1.in" });
-    };
+const leavingCard = (e: MouseEvent) => {
+    if (hoverAnimation.value) {
+        hoverAnimation.value.reverse();
+    }
+};
 </script>
 
 <style scoped>
-#food_card_type {
+.food_card_type {
     max-width: 224px;
     max-height: 288px;
     width: 224px;
@@ -59,7 +71,8 @@ import gsap from 'gsap';
     min-height: 288px;
     background-color: var(--main-bg);
     box-shadow: 0px 7px 29px rgba(253, 187, 63, 0.25);
-    border: solid 1px #FDBB3F
+    border: solid 1px #FDBB3F;
+    font-family: "Josefin Slab", serif;
 }
 
 #card_image {
