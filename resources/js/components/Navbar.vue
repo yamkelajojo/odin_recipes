@@ -1,8 +1,8 @@
 <template>
     <nav class="flex flex-col" style="background-color: var(--main-bg);">
-        <div class="flex px-36 py-6 items-center justify-between">
-            <div class="h-24 w-24 bg-transparent flex items-center justify-center">
-                <img src="/storage/icons/food_truck.png" alt="Food Truck" class="h-full w-full object-contain" />
+        <div class="flex items-center justify-between py-6 px-36">
+            <div class="flex items-center justify-center w-24 h-24 bg-transparent" ref="food_truck">
+                <FoodTruck/>
             </div>
     
             
@@ -11,7 +11,7 @@
             </p>
     
     
-            <button 
+            <!-- <button 
                 @mouseenter="hovering_nav_menu_button = true"
                 @mouseleave="hovering_nav_menu_button = false"
                 ref="nav_menu_button"
@@ -25,39 +25,58 @@
                 </span>
                 n
                 u
-            </button>
+            </button> -->
+            <MenuButton/>
         </div>
         <ColoredBars/>
     </nav>     
-</template>
-
-<script setup lang="ts">
-import { Ref, ref, watch, onMounted } from 'vue';
-import gsap from 'gsap';
-import ColoredBars from './ColoredBars.vue';
-
-const hovering_nav_menu_button: Ref<boolean> = ref(false);
-const nav_menu_button : Ref<HTMLElement | null> = ref(null);
-const burger_svg : Ref<HTMLElement | null> = ref(null);
-const title : Ref<HTMLElement | null> = ref(null);
-
-
-watch(hovering_nav_menu_button, (newQuestion : boolean) => {
-    let tl = gsap.timeline();
-
-    if(nav_menu_button.value && hovering_nav_menu_button.value && burger_svg.value){
-        tl.to(nav_menu_button.value, { duration: 0.2, backgroundColor: '#DB3B2B', color: '#FDBB3F', })
-        tl.to(burger_svg.value.querySelector('path'), { duration: 0.2, fill: '#FDBB3F' }, '<')
-    }
-    else if(nav_menu_button.value && burger_svg.value){
-        tl.to(nav_menu_button.value, { duration: 0.2, backgroundColor: '#FDBB3F', color: '#DB3B2B' })
-        tl.to(burger_svg.value.querySelector('path'), { duration: 0.2, fill: '#DB3B2B' }, '<')
-    }
-})
-</script>
-
-<style lang="css" scoped>
-#title {
+  </template>
+  
+  <script setup lang="ts">
+  import { type Ref, ref, watch, onMounted } from 'vue';
+  import MenuButton from '../components/MenuButton.vue'
+  import gsap from 'gsap';
+  import FoodTruck from '../components/FoodTruck.vue';
+  import { animate } from 'animejs';
+  import ColoredBars from '../components/ColoredBars.vue';
+//   import ColoredBarsOdin from './ColoredBarsOdin.vue';
+  
+  // const hovering_nav_menu_button: Ref<boolean> = ref(false);
+  // const nav_menu_button : Ref<HTMLElement | null> = ref(null);
+  // const burger_svg : Ref<HTMLElement | null> = ref(null);
+  const title : Ref<HTMLElement | null> = ref(null);
+  const food_truck : Ref<HTMLElement | null> = ref(null); 
+  
+  
+  // watch(hovering_nav_menu_button, (newQuestion : boolean) => {
+  //   let tl = gsap.timeline();
+  
+  //   if(nav_menu_button.value && hovering_nav_menu_button.value && burger_svg.value){
+  //       tl.to(nav_menu_button.value, { duration: 0.2, backgroundColor: '#DB3B2B', color: '#FDBB3F', })
+  //       tl.to(burger_svg.value.querySelector('path'), { duration: 0.2, fill: '#FDBB3F' }, '<')
+  //   }
+  //   else if(nav_menu_button.value && burger_svg.value){
+  //       tl.to(nav_menu_button.value, { duration: 0.2, backgroundColor: '#FDBB3F', color: '#DB3B2B' })
+  //       tl.to(burger_svg.value.querySelector('path'), { duration: 0.2, fill: '#DB3B2B' }, '<')
+  //   }
+  // })
+  
+  onMounted(() => {
+    // if(food_truck.value){
+    //   animate(food_truck.value, {
+    //     x:[{
+    //       from: '-300%',
+    //       ease: 'inOutCubic',
+    //       duration: 2000
+    //     }]
+    //   })
+    // }
+  })
+  </script>
+  
+  <style lang="css" scoped>
+  #title {
+    /* background: url('../images/OdinRecipes/food_table.jpg') lightgray 50% / cover no-repeat; */
     color: var(--main-orange);
     font-size: 48px;
     font-style: normal;
@@ -65,24 +84,23 @@ watch(hovering_nav_menu_button, (newQuestion : boolean) => {
     letter-spacing: -3.4px;
     white-space: nowrap; /* To prevent text wrapping */
     text-overflow: ellipsis; /* If you want to show ellipsis for overflowing text */
-}
-
-#menu_button{
+  }
+  
+  #menu_button{
     color: var(--main-red);
     background-color: var(--main-orange);
     letter-spacing: -1.4px;
     white-space: nowrap;
-}
-
-/* #menu_button:hover{
+  }
+  
+  /* #menu_button:hover{
     background-color: var(--main-red);
     color: var(--main-orange);
     letter-spacing: -1.4px;
-} */
-
-#menu_button > .burger_icon{
+  } */
+  
+  #menu_button > .burger_icon{
     padding-right: 0.7px ;
     padding-left: 0.7px ;
-}
-
-</style>
+  }
+  </style>

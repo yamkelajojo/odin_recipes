@@ -1,0 +1,17 @@
+/* we will explain what these classes do next! */
+.spinner_switch-enter-active,
+.spinner_switch-leave-active {
+  transition: all 0.8s ease-out;
+}
+
+.spinner_switch-enter-from{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(80%);
+}
+
+.spinner_switch-leave-to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-80%);
+}

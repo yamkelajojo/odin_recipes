@@ -1,15 +1,14 @@
 <template>
     <div class="flex flex-col h-screen bg-gray-300">
-    <Hero/>
-    <p class="my-2 text-2xl text-gray-800">Recipes</p>
+    <Navbar/>
+    <!-- <p class="my-2 text-4xl text-gray-800">Recipes</p> -->
       <div class="py-16 mx-auto grow lg:container">
-        <transition name="spinner_switch">
-          
+        <transition name="spinner_switch" mode="out-in" >
+          <p v-if="showSpinner" class="text-3xl font-bold">Loading...</p>
+          <p v-else class="text-3xl font-bold text-gray-800">
+            RECPSa
+          </p>
         </transition>
-        <p v-if="showSpinner">Loading...</p>
-        <p v-else class="my-8 text-xs font-bold text-gray-800">
-          <!-- {{Recipes Loaded}} -->
-        </p>
       </div>
       <Footer/>
     </div>
@@ -19,14 +18,50 @@
   import { ref, onMounted, Ref} from 'vue';
   import axios from 'axios';
   import Hero from '../components/Hero.vue';
+  import Navbar from '../components/Navbar.vue';
   import Footer from'../components/Footer.vue';
 
-  const showSpinner: Ref<boolean> = ref(false);
+  interface Recipe{
+    id: number,
+    title: string,
+    description: string,
+    images: Array<Image>,
+    ingredients: Array<Ingredient>,
+    prepararationStages: Array<PreparationStage>,
+  }
+
+  interface Image{
+    id:number,
+    src: string,
+    recipes_id: number
+  }
+
+  interface Ingredient {
+    id: number,
+    ingredients_id: number,
+    quantity: number,
+    recipes_id: number
+  }
+
+  interface PreparationStage{
+    id: number,
+    description: string,
+    recipes_id: number,
+    stage: number,
+  }
+
+  const showSpinner: Ref<boolean> = ref(true);
+  const title: Ref<string> = ref('');
+  const description: Ref<string> = ref('');
+  const images: Ref<Array<Image>> = ref([]);
+  const ingredients: Ref<Array<Ingredient>> = ref([]);
+
+    
 
   const init = async() => {
     showSpinner.value = true;
     try {
-      let response = axios.post('/recipes/fetch');
+      let response = await axios.post('/recipes/fetch');
       console.log("response", response)
     } catch (error) {
       console.log(error);
@@ -44,22 +79,4 @@
     object-fit: contain;
     height: 16rem;
   }
-  
-  .navMenu-slide-in-enter-active,
-  .navMenu-slide-in-leave-active {
-    transition: all 0.5s ease;
-  }
-
-  .navMenu-slide-in-enter-from,
-  .navMenu-slide-in-leave-to {
-    opacity: 0;
-    transform: translateX(-500px);
-  }
-
-
-
-
-
-
-  
   </style>
