@@ -9,6 +9,6 @@ class PreparationStageStep extends Model
 {
     public function recipe()
     {
-        return $this->belongsToPreparationStage(PreparationStage::class, 'food_categories_id');
+        return $this->belongsTo(PreparationStage::class, 'preparation_stages_id');
     }
 }

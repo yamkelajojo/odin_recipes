@@ -25,8 +25,18 @@ class RecipeController extends Controller
         //     'ingredients.ingredient.unit',          
         //     'preparationStages.preparationStageSteps'
         // ])->get();
+
+        //okay dojo,yabona in the function below,kahle-kahle the nesting is done using the names of the models and functions in them
+
+        $recipes = Recipe::with([
+            'images',
+            'preparationStages.steps',
+            'ingredients.ingredient.unit',
+            'ingredients.ingredient.category'
+        ])->get();
         
-        $recipes = Recipe::with(['images', 'ingredients', 'preparationStages'])->get();
+        
+        // $recipes = Recipe::with(['images', 'ingredients', 'preparationStages'])->get();
 
         return response()->json($recipes);
     }

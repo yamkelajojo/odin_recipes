@@ -20,7 +20,7 @@ class Ingredient extends Model
      */
     public function category()
     {
-        return $this->belongsTo(FoodCategory::class, 'food_category_id');
+        return $this->belongsTo(FoodCategory::class, 'food_categories_id');
     }
 
     /**
@@ -28,7 +28,7 @@ class Ingredient extends Model
      */
     public function unit()
     {
-        return $this->belongsTo(Unit::class, 'unit_id');
+        return $this->belongsTo(Unit::class, 'units_id');
     }
 
     public function recipes()

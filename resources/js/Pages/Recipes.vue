@@ -1,18 +1,18 @@
 <template>
-    <div class="flex flex-col h-screen bg-gray-300">
-    <Navbar/>
-    <!-- <p class="my-2 text-4xl text-gray-800">Recipes</p> -->
-      <div class="py-16 mx-auto grow lg:container">
-        <transition name="spinner_switch" mode="out-in" >
-          <p v-if="showSpinner" class="text-3xl font-bold">Loading...</p>
-          <p v-else class="text-3xl font-bold text-gray-800">
-            RECPSa
-          </p>
-        </transition>
-      </div>
-      <Footer/>
+  <div class="flex flex-col h-screen bg-gray-300">
+  <Navbar/>
+  <!-- <p class="my-2 text-4xl text-gray-800">Recipes</p> -->
+    <div class="py-16 mx-auto grow lg:container">
+      <transition name="spinner_switch" mode="out-in" >
+        <p v-if="showSpinner" class="text-3xl font-bold">Loading...</p>
+        <p v-else class="text-3xl font-bold text-gray-800">
+          RECPSa
+        </p>
+      </transition>
     </div>
-  </template>
+    <Footer/>
+  </div>
+</template>
   
   <script setup lang="ts">
   import { ref, onMounted, Ref} from 'vue';
