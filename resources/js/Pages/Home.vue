@@ -33,8 +33,7 @@ const animate_food_type_cards = () => {
                     scrollInitiatorCounter.value++;
                     if(scrollInitiatorCounter.value > 1){
                         turn_on_on_scroll.value = true;                        
-                        console.info("Sangena!");
-
+                        // console.info("Sangena!");
                     }
                 },
                 // debug: true

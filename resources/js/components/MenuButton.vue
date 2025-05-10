@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref,Ref, watch } from 'vue';
+import { ref,Ref, watch, provide, inject } from 'vue';
 import gsap from 'gsap';
 import axios from 'axios';
 import { router } from '@inertiajs/vue3';
@@ -46,7 +46,7 @@ const onClick = async() => {
     if(props.redirect !== ''){
         try {
             console.log('clicked, in if - ', props.redirect)
-            // axios.get(props.redirect.toString());
+            provide(/* key */ 'isRedirecting', /* value */ true);
             router.get(props.redirect);
         } catch (error) {
             console.log(error)

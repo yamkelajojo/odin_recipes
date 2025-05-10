@@ -4,7 +4,7 @@
   <!-- <p class="my-2 text-4xl text-gray-800">Recipes</p> -->
     <div class="py-16 mx-auto grow lg:container">
       <transition name="spinner_switch" mode="out-in" >
-        <p v-if="showSpinner" class="text-3xl font-bold">Loading...</p>
+        <p v-if="showSpinner" class="text-3xl font-bol">Loading...</p>
         <p v-else class="text-3xl font-bold text-gray-800">
           RECPSa
         </p>
@@ -15,12 +15,12 @@
 </template>
   
   <script setup lang="ts">
-  import { ref, onMounted, Ref} from 'vue';
+  import { ref, onMounted, Ref, provide, inject} from 'vue';
   import axios from 'axios';
-  import Hero from '../components/Hero.vue';
   import Navbar from '../components/Navbar.vue';
   import Footer from'../components/Footer.vue';
 
+  
   interface Recipe{
     id: number,
     title: string,
